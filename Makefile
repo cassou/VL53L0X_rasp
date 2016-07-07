@@ -24,18 +24,32 @@ SRCS = \
 
 OBJS  = $(SRCS:.c=.o)
 
+
+
+SRCS_TEST = vl53l0x_ContinuousRanging_Example-rasp.c
+
+OBJS_TEST  = $(SRCS_TEST:.c=.o)
+
+
+
 .PHONY: all
 all: ${TARGET_LIB}
 
 $(TARGET_LIB): $(OBJS)
 	$(AR) -rcs $@ $^
 
-$(OBJS):%.o:%.c
+test: ${TARGET_LIB} $(OBJS_TEST)
+	$(CC) -L. $^ -lVL53L0X_Rasp -o $@
+
+%.o:%.c
 	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@
+
+
+
 
 
 .PHONY: clean
 clean:
-	-${RM} ${TARGET_LIB} ${OBJS}
+	-${RM} ${TARGET_LIB} ${OBJS} $(OBJS_TEST)
 
 
