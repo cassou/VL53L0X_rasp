@@ -19,7 +19,7 @@ int VL53L0X_i2c_init()
     return VL53L0X_ERROR_NOT_IMPLEMENTED;
 }
 
-int32_t VL53L0X_comms_close(void)
+int32_t VL53L0X_i2c_close(void)
 {
     return VL53L0X_ERROR_NOT_IMPLEMENTED;
 }
