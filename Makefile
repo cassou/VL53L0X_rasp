@@ -20,7 +20,7 @@ SRCS = \
 	./platform/src/vl53l0x_platform.c
 OBJS  = $(SRCS:.c=.o)
 
-SRCS_TEST = vl53l0x_ContinuousRanging_Example-rasp.c
+SRCS_TEST = examples/vl53l0x_ContinuousRanging_Example-rasp.c
 OBJS_TEST  = $(SRCS_TEST:.c=.o)
 
 

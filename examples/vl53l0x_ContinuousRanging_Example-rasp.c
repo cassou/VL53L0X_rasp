@@ -94,7 +94,6 @@ VL53L0X_Error rangingTest(VL53L0X_Dev_t *pMyDevice)
     uint8_t isApertureSpads;
     uint8_t VhvSettings;
     uint8_t PhaseCal;
-printf("%s %d\n", __FILE__, __LINE__);
 
     if(Status == VL53L0X_ERROR_NONE)
     {
@@ -103,7 +102,6 @@ printf("%s %d\n", __FILE__, __LINE__);
         // StaticInit will set interrupt by default
         print_pal_error(Status);
     }
-printf("%s %d\n", __FILE__, __LINE__);
     if(Status == VL53L0X_ERROR_NONE)
     {
         printf ("Call of VL53L0X_PerformRefCalibration\n");
@@ -138,7 +136,7 @@ printf("%s %d\n", __FILE__, __LINE__);
     if(Status == VL53L0X_ERROR_NONE)
     {
         uint32_t measurement;
-        uint32_t no_of_measurements = 32;
+        uint32_t no_of_measurements = 5000;
 
         uint16_t* pResults = (uint16_t*)malloc(sizeof(uint16_t) * no_of_measurements);
 
@@ -156,7 +154,7 @@ printf("%s %d\n", __FILE__, __LINE__);
 
                 // Clear the interrupt
                 VL53L0X_ClearInterruptMask(pMyDevice, VL53L0X_REG_SYSTEM_INTERRUPT_GPIO_NEW_SAMPLE_READY);
-                VL53L0X_PollingDelay(pMyDevice);
+                // VL53L0X_PollingDelay(pMyDevice);
             } else {
                 break;
             }
