@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "vl53l0x_api.h"
 #include "vl53l0x_platform.h"
-#include "vl53l0x_i2c_rasp.h"
 
 
 #define VERSION_REQUIRED_MAJOR 1
@@ -95,6 +94,7 @@ VL53L0X_Error rangingTest(VL53L0X_Dev_t *pMyDevice)
     uint8_t isApertureSpads;
     uint8_t VhvSettings;
     uint8_t PhaseCal;
+printf("%s %d\n", __FILE__, __LINE__);
 
     if(Status == VL53L0X_ERROR_NONE)
     {
@@ -103,7 +103,7 @@ VL53L0X_Error rangingTest(VL53L0X_Dev_t *pMyDevice)
         // StaticInit will set interrupt by default
         print_pal_error(Status);
     }
-    
+printf("%s %d\n", __FILE__, __LINE__);
     if(Status == VL53L0X_ERROR_NONE)
     {
         printf ("Call of VL53L0X_PerformRefCalibration\n");
@@ -207,23 +207,13 @@ int main(int argc, char **argv)
     printf ("VL53L0X PAL Continuous Ranging example\n\n");
 
     // Initialize Comms
-    pMyDevice->I2cDevAddr      = 0x52;
-    pMyDevice->comms_type      =  1;
-    pMyDevice->comms_speed_khz =  400;
+    pMyDevice->I2cDevAddr      = 0x29;
 
-    Status = VL53L0X_i2c_init();
-    if (Status != VL53L0X_ERROR_NONE) {
+    pMyDevice->fd = VL53L0X_i2c_init("/dev/i2c-0", pMyDevice->I2cDevAddr);
+    if (MyDevice.fd<0) {
         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
         printf ("Failed to init\n");
-        exit(EXIT_FAILURE);
     }
-
-    /*
-     * Disable VL53L0X API logging if you want to run at full speed
-     */
-#ifdef VL53L0X_LOG_ENABLE
-    VL53L0X_trace_config("test.log", TRACE_MODULE_ALL, TRACE_LEVEL_ALL, TRACE_FUNCTION_ALL);
-#endif
 
     /*
      *  Get the version of the VL53L0X API running in the firmware
