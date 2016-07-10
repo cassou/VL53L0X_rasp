@@ -23,10 +23,9 @@ API_DIR=path/to/the/api/dir CROSS_COMPILE=arm-linux-gnueabihf- make test
 ```
 
 * Copy the 'test' file on your Raspberry Pi
-* launc the 'test' program and your are done !
-
-
-
+* launch the 'test' program and your are done !
 
 
 Note : I know there are kernel driver sources in the API sources, I don't want to use it because it is easier to compil/debug/test/install... a userspace program than a kernel module (high perf is not necessary here).
+
+![alt text](https://github.com/cassou/VL53L0X_rasp/blob/master/doc/raspi_bb.png "cabling example")
