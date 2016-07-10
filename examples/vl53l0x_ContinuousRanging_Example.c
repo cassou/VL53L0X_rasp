@@ -268,12 +268,6 @@ int main(int argc, char **argv)
         }
     }
 
-
-    
-    VL53L0X_SetDeviceAddress(pMyDevice, 0x30);
-
-    exit(0);
-    
     if(Status == VL53L0X_ERROR_NONE)
     {
         Status = rangingTest(pMyDevice);
