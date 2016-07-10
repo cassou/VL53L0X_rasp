@@ -19,11 +19,11 @@ API_DIR=path/to/the/api/dir CROSS_COMPILE=arm-linux-gnueabihf- make
 * Compil the example program :
 
 ```bash
-API_DIR=path/to/the/api/dir CROSS_COMPILE=arm-linux-gnueabihf- make test
+API_DIR=path/to/the/api/dir CROSS_COMPILE=arm-linux-gnueabihf- make examples
 ```
 
-* Copy the 'test' file on your Raspberry Pi
-* launch the 'test' program and your are done !
+* Copy the examples programs (in the bin folder) to your Raspberry Pi
+* run the one of the example programs and your are done !
 
 
 Note : I know there are kernel driver sources in the API sources, I don't want to use it because it is easier to compil/debug/test/install... a userspace program than a kernel module (high perf is not necessary here).
