@@ -2,9 +2,6 @@
 
 This project helps to build and use the VL53L0X API (provided by ST Microelectronics) on Raspberry Pi.
 
-This is a fork of https://github.com/cassou/VL53L0X_rasp
-So far only little changes have been done, mainly in this readme.
-
 ### Installation
 
 * Download the sources of the api on the ST Microelectronics, they are not provided in this repo (I didn't read their license yet, I do not want get in trouble by distributing their code). http://www.st.com/content/st_com/en/products/embedded-software/proximity-sensors-software/stsw-img005.html
