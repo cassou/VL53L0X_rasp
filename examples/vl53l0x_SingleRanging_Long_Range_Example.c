@@ -155,7 +155,7 @@ int main(int argc, char **argv)
     // Initialize Comms
     pMyDevice->I2cDevAddr      = 0x29;
 
-    pMyDevice->fd = VL53L0X_i2c_init("/dev/i2c-0", pMyDevice->I2cDevAddr);
+    pMyDevice->fd = VL53L0X_i2c_init("/dev/i2c-1", pMyDevice->I2cDevAddr);//choose between i2c-0 and i2c-1; On the raspberry pi zero, i2c-1 are pins 2 and 3
     if (MyDevice.fd<0) {
         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
         printf ("Failed to init\n");
