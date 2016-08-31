@@ -1,8 +1,9 @@
 CC = $(CROSS_COMPILE)gcc
 AR = $(CROSS_COMPILE)ar
 RM = rm
+API_DIR = ${PWD}
 
-CFLAGS = -O0 -g -Wall -c
+CFLAGS = -O3 -g -Wall -c
 
 OUTPUT_DIR = bin
 OBJ_DIR = obj
@@ -31,6 +32,8 @@ LIB_OBJS  = $(LIB_SRCS:%.c=$(OBJ_DIR)/%.o)
 EXAMPLES_SRC = $(wildcard examples/*)
 EXAMPLES_BIN = $(EXAMPLES_SRC:examples/%.c=$(OUTPUT_DIR)/%)
 
+SRC = $(wildcard src/*)
+BIN = $(SRC:src/%.c=$(OUTPUT_DIR)/%)
 
 .PHONY: all
 all: ${TARGET_LIB}
@@ -47,7 +50,13 @@ $(EXAMPLES_BIN): bin/%:examples/%.c
 	mkdir -p $(dir $@)
 	$(CC) -L$(OUTPUT_DIR) $^ -lVL53L0X_Rasp  $(INCLUDES) -o $@
 
+$(BIN): bin/%:src/%.c
+	mkdir -p $(dir $@)
+	$(CC) -L$(OUTPUT_DIR) $^ -lVL53L0X_Rasp $(INCLUDES) -o $@
+
 examples:${OUTPUT_DIR} ${TARGET_LIB} $(EXAMPLES_BIN)
+
+build:${OUTPUT_DIR} ${TARGET_LIB} $(BIN)
 
 .PHONY: clean
 clean:
