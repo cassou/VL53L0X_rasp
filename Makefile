@@ -32,8 +32,8 @@ LIB_OBJS  = $(LIB_SRCS:%.c=$(OBJ_DIR)/%.o)
 EXAMPLES_SRC = $(wildcard examples/*)
 EXAMPLES_BIN = $(EXAMPLES_SRC:examples/%.c=$(OUTPUT_DIR)/%)
 
-SRC = $(wildcard src/*)
-BIN = $(SRC:src/%.c=$(OUTPUT_DIR)/%)
+# SRC = $(wildcard src/*)
+# BIN = $(SRC:src/%.c=$(OUTPUT_DIR)/%)
 
 .PHONY: all
 all: ${TARGET_LIB}
@@ -50,16 +50,15 @@ $(EXAMPLES_BIN): bin/%:examples/%.c
 	mkdir -p $(dir $@)
 	$(CC) -L$(OUTPUT_DIR) $^ -lVL53L0X_Rasp  $(INCLUDES) -o $@
 
-$(BIN): bin/%:src/%.c
-	mkdir -p $(dir $@)
-	$(CC) -L$(OUTPUT_DIR) $^ -lVL53L0X_Rasp $(INCLUDES) -o $@
+# $(BIN): bin/%:src/%.c
+# 	mkdir -p $(dir $@)
+# 	$(CC) -L$(OUTPUT_DIR) $^ -lVL53L0X_Rasp $(INCLUDES) -o $@
 
 examples:${OUTPUT_DIR} ${TARGET_LIB} $(EXAMPLES_BIN)
 
-build:${OUTPUT_DIR} ${TARGET_LIB} $(BIN)
+# build:${OUTPUT_DIR} ${TARGET_LIB} $(BIN)
 
 .PHONY: clean
 clean:
 	-${RM} -rf ./$(OUTPUT_DIR)/*  ./$(OBJ_DIR)/*
-
 
