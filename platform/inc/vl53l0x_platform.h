@@ -41,14 +41,14 @@ int VL53L0X_i2c_init(char * devPath, int devAddr);
 int32_t VL53L0X_i2c_close(void);
 
 /**
- * @file vl53l0_platform.h
+ * @file vl53l0x_platform.h
  *
  * @brief All end user OS/platform/application porting
  */
- 
+
 /**
- * @defgroup VL53L0X_platform_group VL53L0 Platform Functions
- * @brief    VL53L0 Platform Functions
+ * @defgroup VL53L0X_platform_group VL53L0X Platform Functions
+ * @brief    VL53L0X Platform Functions
  *  @{
  */
 
@@ -214,7 +214,7 @@ VL53L0X_Error VL53L0X_UpdateByte(VL53L0X_DEV Dev, uint8_t index, uint8_t AndData
 
 /** @} end of VL53L0X_registerAccess_group */
 
-    
+
 /**
  * @brief execute delay in all polling API call
  *
