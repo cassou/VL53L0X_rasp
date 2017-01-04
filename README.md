@@ -4,7 +4,7 @@ This project is aming to port VL53L0X API form cassou/VL53L0X_rasp on raspberry 
 
 ## Installation
 
-For hardware installation see README.install
+For hardware installation see INSTALL.md
 
 ## TODO
 
